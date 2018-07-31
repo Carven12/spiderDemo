@@ -4,8 +4,9 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-import urllib
+import urllib.request
 import os
+
 
 class SpiderdemoPipeline(object):
     def process_item(self, item, spider):
@@ -18,7 +19,7 @@ class SpiderdemoPipeline(object):
 
         local = os.path.join(localFileUrl, item['fileName'] + '.mp4')
 
-        urllib.urlretrieve(downloadUrl, local, self.Schedule)
+        urllib.request.urlretrieve(downloadUrl, local, self.Schedule)
 
     def Schedule(a, b, c):
         """
